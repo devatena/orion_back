@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['cpf', 'password']);
 
         if (Auth::attempt($credentials)) {
             $token = $request->user()->createToken("token")->plainTextToken;
