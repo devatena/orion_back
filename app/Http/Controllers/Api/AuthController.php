@@ -51,5 +51,27 @@ class AuthController extends Controller
         ]);
     }
 
+    // public function userlog(Request $request){
+
+    //     return $request->user();
+    // }
+
+    public function logout(Request $request){
+        // try{
+          
+            $request->user()->tokens()->delete();
+            return response()->json([
+                'message' => 'logout success!',
+            ]);
+        // } catch(Exception $e){
+        //     return response()->json([
+        //         'message' => $e->getMessage(),
+        //     ]);
+        // }
+    //  return response([
+    //     'texte' => 'dajsgdkja'
+    //  ]);
+    }
+
     
 }
