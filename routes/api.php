@@ -20,6 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware('auth:sanctum')->get('/clients', function (Request $request) {
     return $request->Client();
 });
+Route::middleware('auth:sanctum')->get('/prospects', function (Request $request) {
+    return $request->Prospect();
+});
 
 require __DIR__.'/user/auth.php';
 require __DIR__.'/client/clients.php';
+require __DIR__.'/prospect/prospects.php';

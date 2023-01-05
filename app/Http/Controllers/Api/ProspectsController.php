@@ -4,25 +4,24 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Client;
+use App\Models\Prospect;
 
-class ClientsController extends Controller
+class ProspectsController extends Controller
 {
-    
+   
     public function index()
     {
-        $client = Client::with('prospects')->get();
+        $prospect = Prospect::with('client')->get();
         return response([
-            'client' => $client
+            'prospect' => $prospect
         ]);
     }
-   
+
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
-
+        $prospect = Prospect::create($request->all());
         return response([
-            'message' => 'cadastro realizado com sucesso'
+            'message' => 'Cadastro realizado com sucesso'
         ]);
     }
 
@@ -34,12 +33,12 @@ class ClientsController extends Controller
     public function update(Request $request, $id)
     {
         $data = [
-            'name' => $request->name,
-            'cpf' => $request->cpf,
-            'telephone' => $request->telephone
+            'activityBranch' => $request->activityBranch,
+            'whereFoundUs' => $request->whereFoundUs,
+            'value' => $request->value,
         ];
 
-        Client::where('id', $id)->update($data);
+        Prospect::where('id', $id)->update($data);
         return response([
             'message' => 'Dado atualizado com sucesso'
         ]);
@@ -47,9 +46,9 @@ class ClientsController extends Controller
 
     public function destroy($id)
     {
-        Client::where('id', $id)->delete();
+        Prospect::where('id', $id)->delete();
         return response([
-            'message' => 'Dado deletado com sucesso'
+            'message' => 'Dado excluido com sucesso'
         ]);
     }
 }

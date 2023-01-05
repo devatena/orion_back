@@ -30,4 +30,8 @@ class Client extends Model
         'neighborhood',
         'town',
     ];
+
+    public function prospects(){
+        return $this->hasMany(prospect::class);
+    }
 }
