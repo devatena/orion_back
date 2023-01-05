@@ -15,27 +15,27 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->boolean('isPhysicalPerson');
+            $table->boolean('isPhysicalPerson')->nullable();
             $table->string('name');
-            $table->string('corporate-name');
-            $table->string('nickname');
-            $table->string('fantasy-name');
+            $table->string('corporate-name')->nullable();
+            $table->string('nickname')->nullable();
+            $table->string('fantasy-name')->nullable();
             $table->string('cpf');
-            $table->string('cnpj');
-            $table->string('rg');
-            $table->string('issuer');
-            $table->string('gender');
-            $table->date('birthday');
+            $table->string('cnpj')->nullable();
+            $table->string('rg')->nullable();
+            $table->string('issuer')->nullable();
+            $table->string('gender')->nullable();
+            $table->date('birthday')->nullable();
             $table->string('telephone');
-            $table->string('cellphone');
-            $table->string('email');
-            $table->string('site');
-            $table->string('cep');
-            $table->string('street');
-            $table->string('number');
-            $table->string('complement');
-            $table->string('neighborhood');
-            $table->string('town');
+            $table->string('cellphone')->nullable();
+            $table->string('email')->nullable();
+            $table->string('site')->nullable();
+            $table->string('cep')->nullable();
+            $table->string('street')->nullable();
+            $table->string('number')->nullable();
+            $table->string('complement')->nullable();
+            $table->string('neighborhood')->nullable();
+            $table->string('town')->nullable();
             $table->timestamps();
         });
     }
