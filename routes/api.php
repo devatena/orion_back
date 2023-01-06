@@ -17,5 +17,17 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:sanctum')->get('/clients', function (Request $request) {
+    return $request->Client();
+});
+Route::middleware('auth:sanctum')->get('/prospects', function (Request $request) {
+    return $request->Prospect();
+});
+Route::middleware('auth:sanctum')->get('/services', function (Request $request) {
+    return $request->Service();
+});
 
 require __DIR__.'/user/auth.php';
+require __DIR__.'/client/clients.php';
+require __DIR__.'/prospect/prospects.php';
+require __DIR__.'/service/services.php';
