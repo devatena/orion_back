@@ -24,7 +24,7 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->only(['email', 'password']);
+        $credentials = $request->only(['cpf', 'password']);
 
         if (Auth::attempt($credentials)) {
             $token = $request->user()->createToken("token")->plainTextToken;
@@ -49,6 +49,28 @@ class AuthController extends Controller
         return response([
             'name' => Auth::guard('web')->user()
         ]);
+    }
+
+    // public function userlog(Request $request){
+
+    //     return $request->user();
+    // }
+
+    public function logout(Request $request){
+        // try{
+          
+            $request->user()->tokens()->delete();
+            return response()->json([
+                'message' => 'logout success!',
+            ]);
+        // } catch(Exception $e){
+        //     return response()->json([
+        //         'message' => $e->getMessage(),
+        //     ]);
+        // }
+    //  return response([
+    //     'texte' => 'dajsgdkja'
+    //  ]);
     }
 
     
