@@ -15,6 +15,6 @@ class Service extends Model
     ];
 
     public function budget(){
-
+        return $this->belongsToMany(Budget::class, 'budget_service', 'service_id', 'budget_id');
     }
 }
