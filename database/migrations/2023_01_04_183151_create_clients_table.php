@@ -16,10 +16,11 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->boolean('isPhysicalPerson')->nullable();
+            $table->string('status')->nullable();
             $table->string('name');
-            $table->string('corporate-name')->nullable();
+            $table->string('corporate_name')->nullable();
             $table->string('nickname')->nullable();
-            $table->string('fantasy-name')->nullable();
+            $table->string('fantasy_name')->nullable();
             $table->string('cpf');
             $table->string('cnpj')->nullable();
             $table->string('rg')->nullable();

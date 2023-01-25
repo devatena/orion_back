@@ -11,7 +11,9 @@ class ClientsController extends Controller
     
     public function index()
     {
-        $client = Client::with('prospects')->get();
+        $client = Client::with('prospects')
+        ->select('id','name')
+        ->get();
         return response([
             'client' => $client
         ]);
