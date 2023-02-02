@@ -11,7 +11,9 @@ class ClientsController extends Controller
     
     public function index()
     {
-        $client = Client::with('prospects')->get();
+        $client = Client::with('prospects')
+        ->select('id','name', 'cpf', 'status')
+        ->get();
         return response([
             'client' => $client
         ]);
@@ -26,9 +28,22 @@ class ClientsController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show($name)
     {
-        //
+        $client = Client::where('name', $name)
+        ->select('id','name', 'cpf', 'status')
+        ->get();
+        return response([
+            'client' => $client
+        ]);
+    }
+
+    public function showId($id)
+    {
+        $client = Client::find($id);
+        return response([
+            'client' => $client
+        ]);
     }
 
     public function update(Request $request, $id)

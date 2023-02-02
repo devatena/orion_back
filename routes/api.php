@@ -26,8 +26,12 @@ Route::middleware('auth:sanctum')->get('/prospects', function (Request $request)
 Route::middleware('auth:sanctum')->get('/services', function (Request $request) {
     return $request->Service();
 });
+Route::middleware('auth:sanctum')->get('/budgets', function (Request $request) {
+    return $request->Budget();
+});
 
 require __DIR__.'/user/auth.php';
 require __DIR__.'/client/clients.php';
 require __DIR__.'/prospect/prospects.php';
 require __DIR__.'/service/services.php';
+require __DIR__.'/budget/budgets.php';
